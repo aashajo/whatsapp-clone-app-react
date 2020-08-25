@@ -1,0 +1,23 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import {StateProvider} from './StateProvider.js';
+import reducer, {initialState} from "./reducer"
+
+ReactDOM.render(
+  <React.StrictMode>
+    {/* Stateprovider acts as a datalayer, wrapping the entire app under that;
+    When the user login in, pushing it to datalayer to pull it any moment*/}
+    <StateProvider initialState = {initialState} reducer = {reducer}>
+    <App /> 
+    </StateProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
